@@ -54,22 +54,22 @@ Project type: **client**
 
 # Details
 
-## Workflow
-
-1. The project get the data (twitch credentials and proxies) from the backend service.
-2. For each user (with username and password), the program opens a chrome window, with proxy already setup.
-3. The page [ipinfo.io/json](http://ipinfo.io/json) its loaded to validate the proxy.
-4. If the proxy its working, it loads the page [witch.tv/login](https://www.twitch.tv/login),
-5. delete the old cookies,
-6. reload the page
-7. and login with user and password.
-8. If any error happen while login, the program catch and show it. 
-9. If the login was successful, it get the cookies, and finally
+## Workflow
+
+1. The project get the data (twitch credentials and proxies) from the backend service.
+2. For each user (with username and password), the program opens a chrome window, with proxy already setup.
+3. The page [ipinfo.io/json](http://ipinfo.io/json) its loaded to validate the proxy.
+4. If the proxy its working, it loads the page [witch.tv/login](https://www.twitch.tv/login),
+5. delete the old cookies,
+6. reload the page
+7. and login with user and password.
+8. If any error happen while login, the program catch and show it. 
+9. If the login was successful, it get the cookies, and finally
 10. Submit the cookies and reactivate the user in the backend.
 
 # Deploy
 
-* [X] Open chrome with proxies
-* [X] Login with credentials
+* [X] Open chrome with proxies
+* [X] Login with credentials
 * [X] Update cookies in backend
 
