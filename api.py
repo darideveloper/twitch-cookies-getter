@@ -83,24 +83,27 @@ class Api ():
         """
         
         # Get data from api
-        
         if self.project == "botcheers":
             res = self.__requests_url__("users")
             
             # Format response
-            return res.json()["users"]
+            users = res.json()["users"]
         else:
             res = self.__requests_url__("users")
             
             # Format response
             json = res.json()
             users = list(map(lambda user: user["fields"], json))
-            users_formatted = list(map(lambda user: {
+            users = list(map(lambda user: {
                 "username": user["name"],
                 "password": user["password"],
+                "is_active": user["is_active"],
             }, users))
             
-            return users_formatted
+        # Filter inactive users
+        users = list(filter(lambda user: not user["is_active"], users))
+        
+        return users
     
     def post_cookies (self, user:str, cookies) -> dict:
         """ Update cookies of specific user
@@ -125,5 +128,9 @@ class Api ():
 
 if __name__ == "__main__":
     api = Api("botcheers")
+    data = api.get_users ()
+    print (data)
+    
+    api = Api("botviews")
     data = api.get_users ()
     print (data)
